@@ -1,7 +1,7 @@
-# Oil_Spill_Optimization
+# Oil Spill Optimization
 
 ## Initial Steps:
--Find the oil spill accident with the most informatioon available.
+-Find the oil spill accident with the most information available.
 
  -Mainly:
  1. Exact position.
