@@ -1,0 +1,3 @@
+1. Model of oil spill's movement.
+2. Model of oil's composition after 3 days.
+3. Deploy the needed vessels and equipmet and place it in the best (near best) possible position.
