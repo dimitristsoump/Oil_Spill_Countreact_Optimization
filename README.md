@@ -14,4 +14,6 @@
  
  [Weather Details about the day of the accident](https://www.marineinsight.com/environment/different-types-of-dispersants-used-in-an-oil-spill/)
  
+ [Skimmer Typical Capacities](https://www.globalspill.com.au/product/weir-skimmer-30000-lhr-gsw30esp/)
+ 
  ![Image](Oil_spill_imm.PNG)
