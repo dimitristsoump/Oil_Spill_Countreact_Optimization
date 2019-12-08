@@ -80,6 +80,46 @@ def create_individuals(howmany,fromold):
             individuals.append(i)
     return individuals
 
+def surf_thick(vol,t): # Den mporoume na ypothesoume tis A5th, A50th gia thour=0 opote t>=1
+    thour=np.array([1,2,5,10,24,48,72]) #hours
+    A5th=np.array([0.36,0.496,0.784,1.11,1.72,2.43,3.54]) #km^2
+    A50th=np.array([1.14,2.28,3.64,5.15,7.98,11.3,13.8])  # km^2
+    thick5=np.array([15.8,11.5,7,5.1,3.3,2.4,1.6]) # mm
+    thick50=np.array([50.1,25.1,15.7,11.1,7.2,5.1,4.1]) # mm
+    vol1=5000/0.85
+    vol2=10*vol1
+    i=0
+    for k in range(len(thour)):
+        if t<=thour[k] :
+            break
+        else: 
+            i+=1
+            if i==len(thour):
+                i-=1
+    A5=A5th[i-1]+(A5th[i]-A5th[i-1])/(thour[i]-thour[i-1])*(t-thour[i-1])
+    A50=A50th[i-1]+(A50th[i]-A50th[i-1])/(thour[i]-thour[i-1])*(t-thour[i-1])
+    thick5=thick5[i-1]+(thick5[i]-thick5[i-1])/(thour[i]-thour[i-1])*(t-thour[i-1])
+    thick50=thick50[i-1]+(thick50[i]-thick50[i-1])/(thour[i]-thour[i-1])*(t-thour[i-1])
+    Avol=A5+(A50-A5)/(vol2-vol1)*(vol-vol1)
+    tvol=thick5+(thick50-thick5)/(vol2-vol1)*(vol-vol1)
+    return [Avol,tvol,i]
+
+def oil_rec_rate(max_rate,sl_thick):
+    ratio=max_rate/20.16 #to normalize the capacity (20.16 is the maximu capacity of an experiment)
+    thick=np.array([0,6,12,25,50,62.5])
+    cap=np.array([0,59,87,170,272,336])*(60/1000)
+    rec_eff=np.array([0,75,80,81,87,82])
+    i=0
+    for k in range(len(thick)):
+        if sl_thick<=thick[k] :
+            break
+        else: 
+            i+=1
+    capacity=cap[i-1]+(cap[i]-cap[i-1])/(thick[i]-thick[i-1])*(sl_thick-thick[i-1])
+    capacity=capacity*ratio 
+    rec_efficiency=rec_eff[i-1]+(rec_eff[i]-rec_eff[i-1])/(thick[i]-thick[i-1])*(sl_thick-thick[i-1])
+    return [capacity,rec_efficiency]
+
 def cross_over():
     # 2 Individuals from gen>1 are produced by cross over from 2 couples
     pass
