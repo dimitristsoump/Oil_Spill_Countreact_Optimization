@@ -3,7 +3,7 @@ Required Libraries
 ================================================================================================='''
 import numpy as np
 import matplotlib.pyplot as plt
-from staticmap import StaticMap, CircleMarker
+#from staticmap import StaticMap, CircleMarker
 '''=================================================================================================
 Base classes
 ================================================================================================='''
@@ -403,7 +403,7 @@ def render_map(ind,blength):
         r=np.sqrt(A/np.pi)
         radius.append(r)
     arc_length=30*np.pi/180
-    arc_spoint=255*np.pi/180
+    arc_spoint=15*np.pi/180
     spoints=[]
     fpoints=[]
     for R in radius:
